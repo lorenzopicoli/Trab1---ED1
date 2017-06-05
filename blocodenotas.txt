@@ -1,6 +1,13 @@
 printf("Vergonha nacional/n");
 
-
+[casa1]   ->nome
+          ->listaHet casa2 e mosquito
+[casa2]   ->nome
+          ->listaHet casa1 e casa3 e mosquito
+[casa3]   ->nome
+          ->listaHet casa2 e casa4 e mosquito
+[casa4]   ->nome
+          ->listaHet casa3 e mosquito
 
 AGENTE_ATUA <movimentos> : Especifica o número de movimentações dos mosquitos
 (ao todo) antes de cada chamada da função agente_atua().
