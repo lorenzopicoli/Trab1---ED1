@@ -85,7 +85,7 @@ int comparar_nome(void* casa1, void* casa2){
     Casa* a = (Casa*) casa1;
     Casa* b = (Casa*) casa2;
 
-    return a->id == b->id;
+    return a->id == b->id; // Isso funciona? Acho que só funciona com strcmp, não?
 }
 
 ListaGenerica* casas;
