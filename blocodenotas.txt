@@ -1,0 +1,113 @@
+printf("Vergonha nacional/n");
+
+
+
+AGENTE_ATUA <movimentos> : Especifica o número de movimentações dos mosquitos
+(ao todo) antes de cada chamada da função agente_atua().
+
+MOSQUITO_BOTA <movimento> : Especifica o número de movimentação do mosquito
+(cada mosquito) antes de cada chamada da função mosquito_bota().
+
+inserecasa <nome_casa> : Insere uma casa de um determinado nome na simulação.
+
+ligacasas <casa_1><casa_2> : Insere uma ligação entre uma casa e outra que permite o
+vôo do mosquito. A ligação é sempre bidirecional.
+
+inseremosquito <nome_casa> : insere o mosquito em uma determinada casa.
+
+iniciasimulacao <movimentos> : inicia a simulação limitando os movimentos dos
+mosquitos (ao todo) a um determinado número.
+
+FIM : finaliza a simulação, gerando o arquivo de log e limpando a memória.
+
+
+
+#define IDCASA 0
+#define IDMOSQUITO 1
+#define IDVIZINHO 2
+
+****TAD'S****
+*Mosquito
+*Casa
+*Genérico
+GerenciadorRegistros
+GerenciadorComandos
+Aedes
+
+A -> B
+B -> A -> C
+B -> M
+C -> B -> D
+D -> C
+
+*inputs:
+*outputs:
+*pré-condição:
+*pós-condiçao:
+
+
+struct celula_gen
+{
+    void* item; //casa ou mosquito
+    void* Prox;
+    int ID_Item;
+};
+
+struct lista_gen
+{
+    CelulaGen* primeiro;
+    Celulagen* ultimo;
+};
+
+struct casa
+{
+char* nome;
+Listagen* lista_generica;
+Casa* casa_Prox;
+}
+
+struct lista_casas
+{
+Casa* prim;
+Casa* seg;
+};
+
+struct mosquito
+{
+int movimentos_antes_botar = 0;
+int movimentos_totais = 0;
+}
+
+************************
+
+MOSQUITO_BOTA(int a) é diferente de mosquito_bota()
+
+********************
+[a] 3
+mosquito_bota(a)
+[a] 4
+mosquito_bota(a)
+[a] 7
+mosquito_bota(a)
+
+criacasa c1
+criacasa c2
+criacasa c3
+ligacasa c1 c2
+ligacasa c2 c3
+inseremosquito c1
+inseremosquito c2
+
+ c1 -> c2 -> M              (lista generica)
+  |
+ \/
+ c2 ->c1 -> c3 -> M
+  |
+ \/
+ c3 ->c2
+
+
+Libera:
+funcao percorre a lista generica
+entra em cada celula generica
+libera o tipo de dado que nao sei que ta la
